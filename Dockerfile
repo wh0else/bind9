@@ -1,4 +1,4 @@
-FROM alpine:3.23
+FROM alpine:3.24
 
 # bind             - named itself (pulls in bind-tools + dns-root-hints as deps)
 # bind-tools       - dig/nslookup/rndc, also used by the healthcheck
