@@ -8,7 +8,7 @@ DATA_DIR="/var/bind"
 RNDC_KEY="${BIND_DIR}/rndc.key"
 CONF="${BIND_DIR}/named.conf"
 
-mkdir -p "$BIND_DIR" "$DATA_DIR"/{pri,sec,dyn}
+mkdir -p "$BIND_DIR" "$DATA_DIR"
 
 # --- Timezone ----------------------------------------------------------
 if [ -n "${TZ:-}" ] && [ -f "/usr/share/zoneinfo/${TZ}" ]; then
