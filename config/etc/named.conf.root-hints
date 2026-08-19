@@ -1,0 +1,6 @@
+// prime the server with knowledge of the root servers
+zone "." {
+	type hint;
+	file "/usr/share/dns-root-hints/named.root";
+};
+

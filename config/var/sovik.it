@@ -1,0 +1,118 @@
+$TTL    3600
+@       IN      SOA     ns01.sovik.it. hostmaster.sovik.it. (
+                        2026081801      ; Serial
+                        3600            ; Refresh
+                        900             ; Retry
+                        604800          ; Expire
+                        3600 )          ; Negative cache TTL
+
+@       IN      NS      ns01.sovik.it.
+@       IN      NS      ns02.sovik.it.
+
+; --- delegations ---
+; nat1.sovik.it is NOT resolved locally - delegated to the forward zone
+; defined in named.conf.local (dynamic DNS, TTL 60)
+nat1                    IN      NS      nat1.sovik.it.
+
+; --- mgmt ---
+fw                      IN A    192.168.40.1
+fw                      IN AAAA 2001:67c:228c:40::1
+fw01                    IN A    192.168.40.2
+fw01                    IN AAAA 2001:67c:228c:40::2
+fw02                    IN A    192.168.40.3
+fw02                    IN AAAA 2001:67c:228c:40::3
+sw01                    IN A    192.168.40.4
+sw02                    IN A    192.168.40.5
+sw03                    IN A    192.168.40.6
+pve01                   IN A    192.168.40.11
+pve01                   IN AAAA 2001:67c:228c:40::11
+pve01-ilo               IN A    192.168.40.12
+pve01-ilo               IN AAAA 2001:67c:228c:40::12
+pve02                   IN A    192.168.40.13
+pve02                   IN AAAA 2001:67c:228c:40::13
+nas-ilo                 IN A    192.168.40.14
+nas-ilo                 IN AAAA 2001:67c:228c:40::14
+fw-secondary            IN A    192.168.40.30
+fw-secondary            IN AAAA 2001:67c:228c:40::30
+ip6-aes                 IN A    192.168.40.32
+
+; --- client ---
+vpn-internal            IN A    192.168.32.10
+vpn-internal            IN AAAA 2001:67c:228c:32::10
+sovik-macbook           IN A    192.168.32.50
+sovik-macbook           IN AAAA 2001:67c:228c:32::50
+sovik-iphone            IN A    192.168.32.51
+sovik-iphone            IN AAAA 2001:67c:228c:32::51
+sovik-work-macbook      IN A    192.168.32.52
+sovik-work-macbook      IN AAAA 2001:67c:228c:32::52
+sovik-docking-station   IN A    192.168.32.53
+sovik-docking-station   IN AAAA 2001:67c:228c:32::53
+
+; --- guest ---
+apple-tv                IN A    192.168.34.50
+apple-tv                IN AAAA 2001:67c:228c:34::50
+consuela                IN A    192.168.34.51
+emilie-iphone           IN A    192.168.34.52
+emilie-iphone           IN AAAA 2001:67c:228c:34::52
+sonos-kitchen           IN A    192.168.34.53
+sonos-lounge            IN A    192.168.34.54
+dryer                   IN A    192.168.34.55
+tv-livingroom           IN A    192.168.34.56
+tv-livingroom           IN AAAA 2001:67c:228c:34::56
+washer                  IN A    192.168.34.57
+emilie-watch-garmin     IN A    192.168.34.58
+projector               IN A    192.168.34.59
+projector               IN AAAA 2001:67c:228c:34::59
+emilie-ipad             IN A    192.168.34.60
+emilie-ipad             IN AAAA 2001:67c:228c:34::60
+camera                  IN A    192.168.34.61
+emilie-workpc           IN A    192.168.34.62
+emilie-workpc           IN AAAA 2001:67c:228c:34::62
+tv-office               IN A    192.168.34.63
+tv-office               IN AAAA 2001:67c:228c:34::63
+smart-scale             IN A    192.168.34.64
+coffeemaker             IN A    192.168.34.65
+
+; --- gaming ---
+sovik-ps5               IN A    192.168.35.20
+sovik-ps5               IN AAAA 2001:67c:228c:35::20
+sovik-nintendo          IN A    192.168.35.21
+sovik-nintendo-wifi     IN A    192.168.35.22
+
+; --- dns ---
+ns01                    IN A    192.168.41.10
+ns01                    IN AAAA 2001:67c:228c:41::10
+ns02               	IN A    192.168.41.11
+ns02               	IN AAAA 2001:67c:228c:41::11
+
+; --- server ---
+jump                    IN A    192.168.43.20
+jump                    IN AAAA 2001:67c:228c:43::20
+birdnet                 IN A    192.168.43.21
+birdnet                 IN AAAA 2001:67c:228c:43::21
+immich                  IN A    192.168.43.23
+immich                  IN AAAA 2001:67c:228c:43::23
+dockerhost01            IN A    192.168.43.25
+dockerhost01            IN AAAA 2001:67c:228c:43::25
+debian-template-vm      IN A    192.168.43.253
+debian-template-vm      IN AAAA 2001:67c:228c:43::253
+debian-template-ct      IN A    192.168.43.254
+debian-template-ct      IN AAAA 2001:67c:228c:43::254
+
+; --- storage ---
+nas                     IN A    192.168.42.15
+nas                     IN AAAA 2001:67c:228c:42::15
+torrent                 IN A    192.168.42.16
+torrent                 IN AAAA 2001:67c:228c:42::16
+subs                    IN A    192.168.42.19
+subs                    IN AAAA 2001:67c:228c:42::19
+dockerhost02            IN A    192.168.42.22
+dockerhost02            IN AAAA 2001:67c:228c:42::22
+backup                  IN A    192.168.42.23
+backup                  IN AAAA 2001:67c:228c:42::23
+truenas-template        IN A    192.168.42.254
+truenas-template        IN AAAA 2001:67c:228c:42::254
+
+; --- wap ---
+ap01                    IN A    192.168.45.10
+ap02                    IN A    192.168.45.11

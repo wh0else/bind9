@@ -1,0 +1,78 @@
+$TTL    3600
+@       IN      SOA     ns01.sovik.it. hostmaster.sovik.it. (
+                        2026081801      ; Serial
+                        3600            ; Refresh
+                        900             ; Retry
+                        604800          ; Expire
+                        3600 )          ; Negative cache TTL
+
+@       IN      NS      ns01.sovik.it.
+@       IN      NS      ns02.sovik.it.
+
+; --- mgmt (40.x) ---
+1.40    IN      PTR     fw.sovik.it.
+2.40    IN      PTR     fw01.sovik.it.
+3.40    IN      PTR     fw02.sovik.it.
+4.40    IN      PTR     sw01.sovik.it.
+5.40    IN      PTR     sw02.sovik.it.
+6.40    IN      PTR     sw03.sovik.it.
+11.40   IN      PTR     pve01.sovik.it.
+12.40   IN      PTR     pve01-ilo.sovik.it.
+13.40   IN      PTR     pve02.sovik.it.
+14.40   IN      PTR     nas-ilo.sovik.it.
+30.40   IN      PTR     fw-secondary.sovik.it.
+32.40   IN      PTR     ip6-aes.sovik.it.
+
+; --- client (32.x) ---
+10.32   IN      PTR     vpn-internal.sovik.it.
+50.32   IN      PTR     sovik-macbook.sovik.it.
+51.32   IN      PTR     sovik-iphone.sovik.it.
+52.32   IN      PTR     sovik-work-macbook.sovik.it.
+53.32   IN      PTR     sovik-docking-station.sovik.it.
+
+; --- guest (34.x) ---
+50.34   IN      PTR     apple-tv.sovik.it.
+51.34   IN      PTR     consuela.sovik.it.
+52.34   IN      PTR     emilie-iphone.sovik.it.
+53.34   IN      PTR     sonos-kitchen.sovik.it.
+54.34   IN      PTR     sonos-lounge.sovik.it.
+55.34   IN      PTR     dryer.sovik.it.
+56.34   IN      PTR     tv-livingroom.sovik.it.
+57.34   IN      PTR     washer.sovik.it.
+58.34   IN      PTR     emilie-watch-garmin.sovik.it.
+59.34   IN      PTR     projector.sovik.it.
+60.34   IN      PTR     emilie-ipad.sovik.it.
+61.34   IN      PTR     camera.sovik.it.
+62.34   IN      PTR     emilie-workpc.sovik.it.
+63.34   IN      PTR     tv-office.sovik.it.
+64.34   IN      PTR     smart-scale.sovik.it.
+65.34   IN      PTR     coffeemaker.sovik.it.
+
+; --- gaming (35.x) ---
+20.35   IN      PTR     sovik-ps5.sovik.it.
+21.35   IN      PTR     sovik-nintendo.sovik.it.
+22.35   IN      PTR     sovik-nintendo-wifi.sovik.it.
+
+; --- dns (41.x) ---
+10.41   IN      PTR     ns01.sovik.it.
+11.41   IN      PTR     ns02.sovik.it.
+
+; --- server (43.x) ---
+20.43   IN      PTR     jump.sovik.it.
+21.43   IN      PTR     birdnet.sovik.it.
+23.43   IN      PTR     immich.sovik.it.
+25.43   IN      PTR     dockerhost01.sovik.it.
+253.43  IN      PTR     debian-template-vm.sovik.it.
+254.43  IN      PTR     debian-template-ct.sovik.it.
+
+; --- storage (42.x) ---
+15.42   IN      PTR     nas.sovik.it.
+16.42   IN      PTR     torrent.sovik.it.
+19.42   IN      PTR     subs.sovik.it.
+22.42   IN      PTR     dockerhost02.sovik.it.
+23.42   IN      PTR     backup.sovik.it.
+254.42  IN      PTR     truenas-template.sovik.it.
+
+; --- wap (45.x) ---
+10.45   IN      PTR     ap01.sovik.it.
+11.45   IN      PTR     ap02.sovik.it.

@@ -1,0 +1,59 @@
+$TTL    3600
+@       IN      SOA     ns01.sovik.it. hostmaster.sovik.it. (
+                        2026081801      ; Serial
+                        3600            ; Refresh
+                        900             ; Retry
+                        604800          ; Expire
+                        3600 )          ; Negative cache TTL
+
+@       IN      NS      ns01.sovik.it.
+@       IN      NS      ns02.sovik.it.
+
+; --- mgmt (2001:67c:228c:40::/64) ---
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.0     IN PTR  fw.sovik.it.
+2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.0     IN PTR  fw01.sovik.it.
+3.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.0     IN PTR  fw02.sovik.it.
+1.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.0     IN PTR  pve01.sovik.it.
+2.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.0     IN PTR  pve01-ilo.sovik.it.
+3.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.0     IN PTR  pve02.sovik.it.
+4.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.0     IN PTR  nas-ilo.sovik.it.
+0.3.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.0     IN PTR  fw-secondary.sovik.it.
+
+; --- client (2001:67c:228c:32::/64) ---
+0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.3.0.0     IN PTR  vpn-internal.sovik.it.
+0.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.3.0.0     IN PTR  sovik-macbook.sovik.it.
+1.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.3.0.0     IN PTR  sovik-iphone.sovik.it.
+2.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.3.0.0     IN PTR  sovik-work-macbook.sovik.it.
+3.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.3.0.0     IN PTR  sovik-docking-station.sovik.it.
+
+; --- guest (2001:67c:228c:34::/64) ---
+0.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.3.0.0     IN PTR  apple-tv.sovik.it.
+2.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.3.0.0     IN PTR  emilie-iphone.sovik.it.
+6.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.3.0.0     IN PTR  tv-livingroom.sovik.it.
+9.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.3.0.0     IN PTR  projector.sovik.it.
+0.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.3.0.0     IN PTR  emilie-ipad.sovik.it.
+2.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.3.0.0     IN PTR  emilie-workpc.sovik.it.
+3.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.3.0.0     IN PTR  tv-office.sovik.it.
+
+; --- gaming (2001:67c:228c:35::/64) ---
+0.2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.5.3.0.0     IN PTR  sovik-ps5.sovik.it.
+
+; --- dns (2001:67c:228c:41::/64) ---
+0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.4.0.0     IN PTR  ns01.sovik.it.
+1.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.4.0.0     IN PTR  ns02.sovik.it.
+
+; --- server (2001:67c:228c:43::/64) ---
+0.2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.4.0.0     IN PTR  jump.sovik.it.
+1.2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.4.0.0     IN PTR  birdnet.sovik.it.
+3.2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.4.0.0     IN PTR  immich.sovik.it.
+5.2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.4.0.0     IN PTR  dockerhost01.sovik.it.
+3.5.2.0.0.0.0.0.0.0.0.0.0.0.0.0.3.4.0.0     IN PTR  debian-template-vm.sovik.it.
+4.5.2.0.0.0.0.0.0.0.0.0.0.0.0.0.3.4.0.0     IN PTR  debian-template-ct.sovik.it.
+
+; --- storage (2001:67c:228c:42::/64) ---
+5.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.4.0.0     IN PTR  nas.sovik.it.
+6.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.4.0.0     IN PTR  torrent.sovik.it.
+9.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.4.0.0     IN PTR  subs.sovik.it.
+2.2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.4.0.0     IN PTR  dockerhost02.sovik.it.
+3.2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.4.0.0     IN PTR  backup.sovik.it.
+4.5.2.0.0.0.0.0.0.0.0.0.0.0.0.0.2.4.0.0     IN PTR  truenas-template.sovik.it.

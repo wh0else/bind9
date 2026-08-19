@@ -1,0 +1,26 @@
+services:
+  bind9:
+    image: ghcr.io/wh0else/bind9:latest
+    container_name: bind9
+    restart: unless-stopped
+    networks:
+      - inet6
+    environment:
+      - TZ=Europe/Oslo
+    ports:
+      - "5353:5353/tcp"
+      - "5353:5353/udp"
+      - "127.0.0.1:953:953/tcp"
+    volumes:
+      - ./config/etc:/etc/bind
+      - ./config/var:/var/bind
+      - /usr/local/share/ca-certificates/sovik-root-ca.crt:/etc/ssl/certs/753f4e20.0:ro
+
+networks:
+  inet6:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+        - subnet: "2001:67c:228c:100::/64"

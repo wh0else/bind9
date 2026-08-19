@@ -1,0 +1,22 @@
+controls {
+    inet 127.0.0.1 port 953 allow { any; } keys { "rndc-key"; };
+};
+
+options {
+    directory "/var/bind";
+
+    forwarders {
+	192.168.41.1;
+    };
+    forward only;
+
+    dnssec-validation auto;
+    listen-on port 5353 { any; };
+    listen-on-v6 port 5353 { any; };
+    #listen-on { any; };
+    #listen-on-v6 { any; };
+    allow-query { any; };
+
+    pid-file "/var/run/named/named.pid";
+};
+

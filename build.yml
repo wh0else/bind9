@@ -1,0 +1,65 @@
+name: Build & push bind9 image
+
+on:
+  schedule:
+    # 04:17 UTC every Sunday
+    - cron: "17 4 * * 0"
+  push:
+    branches: [main]
+    paths:
+      - "Dockerfile"
+      - "entrypoint.sh"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/bind9
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          no-cache: true
+          pull: true
+          load: true
+          push: false
+          tags: ${{ env.IMAGE_NAME }}:build
+          platforms: linux/amd64
+
+      - name: Determine BIND version
+        id: version
+        run: |
+          RAW=$(docker run --rm --entrypoint named ${{ env.IMAGE_NAME }}:build -v | head -n1)
+          VERSION=$(echo "$RAW" | grep -oE '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -n1)
+          echo "Detected: $RAW -> v$VERSION"
+          echo "version=v${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Tag and push
+        run: |
+          docker tag ${{ env.IMAGE_NAME }}:build ${{ env.IMAGE_NAME }}:latest
+          docker tag ${{ env.IMAGE_NAME }}:build ${{ env.IMAGE_NAME }}:${{ steps.version.outputs.version }}
+          docker tag ${{ env.IMAGE_NAME }}:build ${{ env.IMAGE_NAME }}:${{ github.run_id }}
+          docker push ${{ env.IMAGE_NAME }}:latest
+          docker push ${{ env.IMAGE_NAME }}:${{ steps.version.outputs.version }}
+          docker push ${{ env.IMAGE_NAME }}:${{ github.run_id }}
